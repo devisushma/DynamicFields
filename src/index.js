@@ -1,13 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
+import { createLogger } from 'redux-logger'
+import reducer from './actions.js'
+
+const middleware = []
+if (process.env.NODE_ENV !== 'production') {
+  middleware.push(createLogger())
+}
+
+const store = configureStore({
+  reducer,
+  middleware: () => middleware
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>
 );
 

@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+.form-control{
+  border: 1px solid #433d3dff;
+}
+
+.form-select {
+  border: 1px solid #433d3dff;
+}
+
+.form-check-input[type=checkbox] {
+  border: 1px solid #433d3dff;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
