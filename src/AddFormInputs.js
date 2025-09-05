@@ -51,7 +51,8 @@ const AddFormInputs = () => {
                                     <Form.Check
                                         inline
                                         label={option}
-                                        onChange={(e) => handleTextChange(e, field)}
+                                        value={option}
+                                        onClick={(e) => handleTextChange(e, field)}
                                     />
                                 ))}
                             </div>

@@ -39,7 +39,7 @@ export const fieldObj = {
     value: ""
 }
 
-const savedFields = JSON.parse(localStorage.getItem('fields') || '[]');
+const savedFields = JSON.parse(localStorage.getItem('fields') || []);
 const initialState = { showPopup: false, fields: savedFields, selectedOption: "" };
 
 const reducer = (state = initialState, action) => {
