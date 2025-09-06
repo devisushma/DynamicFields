@@ -1,12 +1,13 @@
 import { setShowPopup, setSelectedOption, fieldObj, setAddFields } from './actions';
 import { Modal, Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fieldTypes, shortTextField, longTextField, passwordField, dropdownField, checkboxField } from './constants';
 
 const AddFieldModal = ({ }) => {
     const options = fieldTypes
     const dispatch = useDispatch();
     const handleCloseModal = () => dispatch(setShowPopup());
+    const  { showPopup } = useSelector(state => state);
 
     const handleSelectChange = e => {
         dispatch(setSelectedOption(e.target.value));
@@ -57,8 +58,8 @@ const AddFieldModal = ({ }) => {
     }
 
     return (
-        <Modal.Dialog>
-            <Modal.Header closeButton onHide={handleCloseModal}>
+        <Modal show={showPopup} onHide={handleCloseModal}>
+            <Modal.Header closeButton>
                 <Modal.Title>Add Field</Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -67,7 +68,7 @@ const AddFieldModal = ({ }) => {
                     {options.map(item => <option value={item.id}>{item.name}</option>)}
                 </Form.Select>
             </Modal.Body>
-        </Modal.Dialog>
+        </Modal>
     )
 }
 
